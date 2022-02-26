@@ -107,7 +107,7 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 			header("refresh:5; url=profile.php");
 			exit();
 		} else {
-			echo msyqli_error();
+			echo msyqli_error($connect);
 			echo '<hr/>';
 			echo 'Opps! Something wen\'t wrong, Please contact Sharif Vhai Administrator.';
 		}		
