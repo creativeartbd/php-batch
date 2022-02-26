@@ -41,7 +41,7 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 		}
 
 		// Pasword Validation
-		if( empyt( $password ) ) {
+		if( empty( $password ) ) {
 			echo "Password is required";
 		}
 
