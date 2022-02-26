@@ -64,6 +64,10 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 	if( !empty( $fullname ) && !empty( $email ) && !empty( $password ) && !empty( $gender ) && !empty( $country ) && !empty( $file_name ) ) {
 		// Insert form data to the database.
 		echo "Successfully Submitted. <br/>";
+		
+		session_start();
+		$_SESSION['fullname'] =  $fullname;
+		$_SESSION['email'] = $email;
 	}
 }
 
