@@ -27,38 +27,43 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 	$file_name	= $_FILES['picture']['name'];	
 
 	if( empty( $fullname ) && empty( $email ) && empty( $password ) && empty( $gender ) && empty( $country ) && empty( $file_name ) ) {
-		echo "All fields are required";
+		echo "All fields are required <br/>";
 	} else {
 
 		// Full Name validation
 		if( empty( $fullname ) ) {
-			echo "Full name is required";
+			echo "Full name is required <br/>";
 		}
 
 		// Email address validation
 		if( empty(  $email ) ) {
-			echo "Email address is required";
+			echo "Email address is required <br/>";
 		}
 
 		// Pasword Validation
 		if( empty( $password ) ) {
-			echo "Password is required";
+			echo "Password is required <br/>";
 		}
 
 		// Gender validation
 		if( empty( $gender) ) {
-			echo "Please choose your gender";
+			echo "Please choose your gender <br/>";
 		}
 
 		// Country Validation
 		if( empty( $country) ) {
-			echo "Please choose your country ";
+			echo "Please choose your country <br/>";
 		}
 
 		// File validation
 		if( empty( $file_name ) ) {
-			echo "Plese choose file name";
+			echo "Plese choose file name <br/>";
 		}
+	}
+
+	if( !empty( $fullname ) && !empty( $email ) && !empty( $password ) && !empty( $gender ) && !empty( $country ) && !empty( $file_name ) ) {
+		// Insert form data to the database.
+		echo "Successfully Submitted. <br/>";
 	}
 }
 
