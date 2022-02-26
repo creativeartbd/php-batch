@@ -22,9 +22,17 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 	$fullname 	= $_POST['fullname'];
 	$email 			= $_POST['email'];
 	$password 	= $_POST['password'];
+	$hash_pass	=	hash( 'sha512', $password );
 	$gender 		= isset( $_POST['gender'] ) ? $_POST['gender'] : ''; // Ternary operator
 	$country 		= $_POST['country'];
 	$file_name	= $_FILES['picture']['name'];	
+
+	if( ! empty( $file_name) ) {
+		$explode = explode('.', $file_name);
+		$extension = $explode[1];
+		$uniqid = uniqid();
+		$final_file_name = $uniqid . '.' . $extension;
+	}
 
 	if( empty( $fullname ) && empty( $email ) && empty( $password ) && empty( $gender ) && empty( $country ) && empty( $file_name ) ) {
 		echo "All fields are required <br/>";
@@ -63,14 +71,46 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 
 	if( !empty( $fullname ) && !empty( $email ) && !empty( $password ) && !empty( $gender ) && !empty( $country ) && !empty( $file_name ) ) {
 		// Insert form data to the database.
-		echo "Successfully Submitted. <br/>";
 
-		session_start();
-		$_SESSION['fullname'] =  $fullname;
-		$_SESSION['email'] = $email;
-		//header("Location:profile.php");
-		header("refresh:5; url=profile.php");
-		exit();
+		// require 
+		// require_once
+		// include 
+		// include_once
+
+		require_once('connection.php');
+
+		// INSERT, UPDATE, SELECT, DELETE
+
+		// Insert form data to the database table called "students"
+		// sql query
+		// Y-m-d H:m
+		$date = date('Y-m-d H:m');
+
+		$query = "INSERT INTO students( fullname, email, password, gender, country, picture, joined ) VALUES( '$fullname', '$email', '$hash_pass', '$gender', '$country', '$final_file_name', '$date' )";
+
+		if( mysqli_query( $connect, $query ) ) {
+
+			echo "Successfully Submitted. <br/>";
+
+			// PHP OOP - Object Orinted Programing 
+			// PDO - PHP Data Object
+			// Procedural
+
+			// mysql -- old
+			// mysqli -- new
+			// i -- improve 
+
+			session_start();
+			$_SESSION['fullname'] =  $fullname;
+			$_SESSION['email'] = $email;
+			//header("Location:profile.php");
+			header("refresh:5; url=profile.php");
+			exit();
+		} else {
+			echo msyqli_error();
+			echo '<hr/>';
+			echo 'Opps! Something wen\'t wrong, Please contact Sharif Vhai Administrator.';
+		}		
 	}
 }
 
