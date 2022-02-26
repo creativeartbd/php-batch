@@ -29,8 +29,35 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'registration' ) {
 	if( empty( $fullname ) && empty( $email ) && empty( $password ) && empty( $gender ) && empty( $country ) && empty( $file_name ) ) {
 		echo "All fields are required";
 	} else {
+
+		// Full Name validation
 		if( empty( $fullname ) ) {
 			echo "Full name is required";
+		}
+
+		// Email address validation
+		if( empty(  $email ) ) {
+			echo "Email address is required";
+		}
+
+		// Pasword Validation
+		if( empyt( $password ) ) {
+			echo "Password is required";
+		}
+
+		// Gender validation
+		if( empty( $gender) ) {
+			echo "Please choose your gender";
+		}
+
+		// Country Validation
+		if( empty( $country) ) {
+			echo "Please choose your country ";
+		}
+
+		// File validation
+		if( empty( $file_name ) ) {
+			echo "Plese choose file name";
 		}
 	}
 }
