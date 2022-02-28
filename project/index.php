@@ -6,6 +6,7 @@
 	<title>Project on 28th February</title>
 	<!-- CSS only -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,8 +16,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <a class="navbar-brand" href="#">Hidden brand</a>
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <a class="navbar-brand" href="#">Logo</a>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
         </li>
@@ -24,10 +25,10 @@
           <a class="nav-link" href="about.php">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="services.php">Services</a>
+          <a class="nav-link" href="services.php">Services</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled"  href="contact.php">Contact</a>
+          <a class="nav-link"  href="contact.php">Contact</a>
         </li>
       </ul>      
     </div>
