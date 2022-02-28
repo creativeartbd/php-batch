@@ -16,8 +16,16 @@
 	<div class="row">
 		<!-- Article start here -->
 		<div class="col-md-8">
-			<h2>About Us</h2>
-			<p>Lorem, ipsum, dolor sit amet consectetur adipisicing elit. Quo, molestiae exercitationem deleniti omnis harum. Ipsum ab perspiciatis, numquam! Suscipit repellendus qui quibusdam nemo odit obcaecati ipsa tenetur? Nulla, sit, ipsam.</p>
+			<?php 
+			require_once('connection.php');
+			$sql = "SELECT * FROM pages WHERE page_id = 1";
+			$query = mysqli_query( $connect, $sql );
+			$result = mysqli_fetch_assoc( $query );
+			$page_name = $result['page_name'];
+			$page_content = $result['page_content'];
+			?>
+			<h2><?php echo $page_name; ?></h2>
+			<p><?php echo $page_content; ?></p>
 		</div>
 		<!-- Article end here -->
 		<!-- Sidebar start here -->
