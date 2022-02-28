@@ -48,4 +48,6 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'Login' ) {
 		</table>
 	</form>
 
+<?php else: ?>
+	<?php echo "<h4>Welcome " . $_SESSION['email'] . ' Vhai :)' . "</h4>"; ?>
 <?php endif; ?>
