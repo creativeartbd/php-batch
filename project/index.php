@@ -30,17 +30,20 @@
 			// Get the data from the database
 			$sql = "SELECT * FROM blog";
 			$query = mysqli_query( $connect, $sql );
+			
 			while( $results = mysqli_fetch_assoc( $query ) ) {
+				
 				$blog_title = $results['blog_title'];	
 				$blog_content = $results['blog_content'];	
 				$blog_created = $results['created'];	
 				$status = $results['status'];	
+
 				?>
 				<article>
 					<h2><?php echo $blog_title; ?></h2>
 					<span>Published on <?php echo $blog_created; ?></span>
 					<hr>
-					<p><?php echo $blog_content; ?></p>
+					<p><?php echo substr($blog_content, 0, 200) ; ?></p>
 				</article>
 				<?php
 			}
