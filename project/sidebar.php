@@ -26,8 +26,6 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'Login' ) {
 	if( $found == 1 ) {
 		echo '<div class="alert alert-success">Successfully Logged</div>';		
 		$_SESSION['email'] = $email;
-		header("refresh:4;url:admin/index.php");
-		exit();
 	}	
 }
 ?>

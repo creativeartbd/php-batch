@@ -12,43 +12,21 @@
 
 <?php require_once('navbar.php'); ?>
 
-<div class="container">
-	<!-- Banner start here -->
-	<div class="row">
-		<div class="col-md-12">			
-			<div class="banner"></div>			
-		</div>
-	</div>
-	<!-- Banner end here -->
+<div class="container">	
 	<div class="row">
 		<!-- Article start here -->
 		<div class="col-md-8">
-			<?php
-			// Make database connection
+			<?php 
 			require_once('connection.php');
-
-			// Get the data from the database
-			$sql = "SELECT * FROM blog";
+			$blog_id = $_GET['blog_id'];
+			$sql = "SELECT * FROM blog WHERE blog_id = $blog_id ";
 			$query = mysqli_query( $connect, $sql );
-
-			while( $results = mysqli_fetch_assoc( $query ) ) {
-				
-				$blog_id = $results['blog_id'];
-				$blog_title = $results['blog_title'];	
-				$blog_content = $results['blog_content'];	
-				$blog_created = $results['created'];	
-				$status = $results['status'];	
-
-				?>
-				<article>
-					<h2><a href="blog-details.php?blog_id=<?php echo $blog_id; ?>"><?php echo $blog_title; ?></a></h2>
-					<span>Published on <?php echo $blog_created; ?></span>
-					<hr>
-					<p><?php echo substr($blog_content, 0, 200) ; ?></p>
-				</article>
-				<?php
-			}
-			?>			
+			$result = mysqli_fetch_assoc( $query );
+			$blog_title = $result['blog_title'];
+			$blog_content = $result['blog_content'];
+			?>
+			<h2><?php echo $blog_title; ?></h2>
+			<p><?php echo $blog_content; ?></p>
 		</div>
 		<!-- Article end here -->
 		<!-- Sidebar start here -->
