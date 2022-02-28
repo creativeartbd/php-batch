@@ -8,13 +8,21 @@
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="about.php">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="services.php">Our services</a>
-        </li>
+        </li>   
+        <?php 
+        require_once('connection.php');
+        $sql = "SELECT * FROM pages";
+        $query = mysqli_query( $connect, $sql );
+        while( $result = mysqli_fetch_assoc( $query ) ) {
+          $page_id = $result['page_id'];
+          $page_name = $result['page_name'];
+          ?>
+          <li class="nav-item">
+            <a class="nav-link" href="page.php?page_id=<?php echo $page_id; ?>"><?php echo $page_name; ?></a>
+          </li>
+          <?php
+        }
+        ?>
         <li class="nav-item">
           <a class="nav-link"  href="contact.php">Contact</a>
         </li>

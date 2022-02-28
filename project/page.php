@@ -18,12 +18,14 @@
 		<div class="col-md-8">
 			<?php 
 			require_once('connection.php');
-			$sql = "SELECT * FROM pages WHERE page_id = 2";
+			$page_id = $_GET['page_id'];
+			$sql = "SELECT * FROM pages WHERE page_id = $page_id";
 			$query = mysqli_query( $connect, $sql );
 			$result = mysqli_fetch_assoc( $query );
 			$page_name = $result['page_name'];
 			$page_content = $result['page_content'];
 			?>
+			
 			<h2><?php echo $page_name; ?></h2>
 			<p><?php echo $page_content; ?></p>
 		</div>
