@@ -27,12 +27,20 @@
         <li class="nav-item">
           <a class="nav-link"  href="contact.php">Contact</a>
         </li>
+        
         <?php 
+        if( ! isset( $_SESSION['email'] ) ) {
+          ?>
+          <li class="nav-item">
+            <a class="nav-link"  href="registration.php">Registration</a>
+          </li>
+          <?php
+        }
         if( isset( $_SESSION['email'] ) ) {
           ?>
           <li class="nav-item">
-            <a class="nav-link"  href="logout.php">Logout</a>
-          </li>
+            <a class="nav-link bg bg-danger text-white"  href="logout.php">Logout</a>
+          </li>          
           <?php
         }
         ?>

@@ -7,7 +7,7 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'Login' ) {
 
 	require_once( 'connection.php' );
 
-	$check_sql	=	"SELECT email, password FROM students WHERE email = '$email' AND password = '$hash' ";
+	$check_sql	=	"SELECT email, password FROM students WHERE email = '$email' AND password = '$hash' AND status = 1 ";
 	$check_query = mysqli_query( $connect, $check_sql );
 	$found 	= mysqli_num_rows( $check_query );
 
@@ -19,7 +19,7 @@ if( isset( $_POST['submit'] ) && $_POST['submit'] == 'Login' ) {
 		} elseif( empty( $password) ) {
 			echo '<div class="alert alert-danger">Please enter your password</div>';
 		} elseif( $found !== 1 ) {
-			echo '<div class="alert alert-danger">Either username or password is incorrect</div>';
+			echo '<div class="alert alert-danger">Either username or password is incorrect or your account is inactive.</div>';
 		}
 	}
 
