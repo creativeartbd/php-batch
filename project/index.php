@@ -23,10 +23,28 @@
 	<div class="row">
 		<!-- Article start here -->
 		<div class="col-md-8">
-			<article>
-				<h2>Today's News</h2>
-				<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Animi neque illo asperiores repellat vitae eum recusandae consequatur inventore non voluptas, quae voluptatum quis aspernatur expedita facere ipsa veritatis perferendis est!</p>
-			</article>
+			<?php
+			// Make database connection
+			require_once('connection.php');
+
+			// Get the data from the database
+			$sql = "SELECT * FROM blog";
+			$query = mysqli_query( $connect, $sql );
+			while( $results = mysqli_fetch_assoc( $query ) ) {
+				$blog_title = $results['blog_title'];	
+				$blog_content = $results['blog_content'];	
+				$blog_created = $results['created'];	
+				$status = $results['status'];	
+				?>
+				<article>
+					<h2><?php echo $blog_title; ?></h2>
+					<span>Published on <?php echo $blog_created; ?></span>
+					<hr>
+					<p><?php echo $blog_content; ?></p>
+				</article>
+				<?php
+			}
+			?>			
 		</div>
 		<!-- Article end here -->
 		<!-- Sidebar start here -->
